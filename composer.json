@@ -1,0 +1,39 @@
+{
+    "name": "karmabot/platform",
+    "type": "library",
+    "description": "Bot platform kernel",
+    "license": "MIT",
+    "keywords": [
+        "vk",
+        "slack",
+        "gitter",
+        "bbcode",
+        "github",
+        "markdown",
+        "messages",
+        "telegram",
+        "facebook",
+        "normalization",
+        "approximation"
+    ],
+    "require": {
+        "php": ">=7.1",
+        "react/event-loop": "~0.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "KarmaBot\\Platform\\": "src/"
+        }
+    },
+    "suggest": {
+        "monolog/monolog": "Logging support"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~6.0"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "KarmaBot\\Platform\\Tests\\": "tests/"
+        }
+    }
+}
