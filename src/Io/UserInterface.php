@@ -19,6 +19,11 @@ interface UserInterface
     public function getId(): string;
 
     /**
+     * @return string|null
+     */
+    public function getAvatar(): ?string;
+
+    /**
      * @return string
      */
     public function getName(): string;

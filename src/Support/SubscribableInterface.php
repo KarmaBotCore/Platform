@@ -7,17 +7,17 @@
  */
 declare(strict_types=1);
 
-namespace KarmaBot\Platform\Io;
+namespace KarmaBot\Platform\Support;
 
 /**
- * Interface SubscribeInterface
- * @package KarmaBot\Platform\Io
+ * Interface SubscribableInterface
+ * @package KarmaBot\Platform\Support
  */
-interface SubscribeInterface
+interface SubscribableInterface
 {
     /**
      * @param \Closure $then
-     * @return SubscribeInterface
+     * @return void
      */
-    public function subscribe(\Closure $then): SubscribeInterface;
+    public function subscribe(\Closure $then): void;
 }

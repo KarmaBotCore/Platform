@@ -32,16 +32,16 @@ interface SystemInterface
     public function auth(): UserInterface;
 
     /**
-     * @param string $channel
+     * @param string $channelId
      * @return bool
      */
-    public function has(string $channel): bool;
+    public function has(string $channelId): bool;
 
     /**
-     * @param string $id
+     * @param string $channelId
      * @return ChannelInterface
      */
-    public function channel(string $id): ChannelInterface;
+    public function channel(string $channelId): ChannelInterface;
 
     /**
      * @return array|ChannelInterface[]

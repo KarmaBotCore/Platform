@@ -18,7 +18,8 @@
     ],
     "require": {
         "php": ">=7.1",
-        "react/event-loop": "~0.4"
+        "react/event-loop": "~0.4",
+        "illuminate/support": "5.*"
     },
     "autoload": {
         "psr-4": {
@@ -26,10 +27,12 @@
         }
     },
     "suggest": {
-        "monolog/monolog": "Logging support"
+        "monolog/monolog": "~1.22: Logging support",
+        "serafim/gitter-api": "~4.0: Gitter system support"
     },
     "require-dev": {
-        "phpunit/phpunit": "~6.0"
+        "phpunit/phpunit": "~6.0",
+        "monolog/monolog": "~1.22"
     },
     "autoload-dev": {
         "psr-4": {

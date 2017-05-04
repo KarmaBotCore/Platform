@@ -10,16 +10,11 @@ declare(strict_types=1);
 namespace KarmaBot\Platform\Io;
 
 /**
- * Interface ReceivedMessageInterface
+ * Interface MessageInterface
  * @package KarmaBot\Platform\Io
  */
-interface ReceivedMessageInterface
+interface MessageInterface
 {
-    /**
-     * @return string
-     */
-    public function getBody(): string;
-
     /**
      * @return ChannelInterface
      */
@@ -49,10 +44,4 @@ interface ReceivedMessageInterface
      * @return bool
      */
     public function canBeUpdated(): bool;
-
-    /**
-     * @param string $message
-     * @return bool
-     */
-    public function update(string $message): bool;
 }

@@ -18,17 +18,22 @@ class User implements UserInterface
     /**
      * @var SystemInterface
      */
-    private $system;
+    protected $system;
 
     /**
      * @var string
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      */
-    private $name;
+    protected $name;
+
+    /**
+     * @var string|null
+     */
+    protected $avatar;
 
     /**
      * User constructor.
@@ -46,12 +51,13 @@ class User implements UserInterface
     /**
      * @return array
      */
-    public function __debugInfo()
+    public function __debugInfo(): array
     {
         return [
             'system' => $this->getSystem()->getName(),
             'id'     => $this->getId(),
             'name'   => $this->getName(),
+            'avatar' => $this->getAvatar(),
         ];
     }
 
@@ -77,5 +83,13 @@ class User implements UserInterface
     public function getName(): string
     {
         return $this->name;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getAvatar(): ?string
+    {
+        return $this->avatar;
     }
 }

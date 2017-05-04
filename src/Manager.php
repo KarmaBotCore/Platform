@@ -15,10 +15,10 @@ use React\EventLoop\Factory as EventLoop;
 use KarmaBot\Platform\Io\SystemInterface;
 
 /**
- * Class Factory
+ * Class Manager
  * @package KarmaBot\Platform
  */
-class Factory
+class Manager
 {
     /**
      * @var LoopInterface
@@ -29,6 +29,11 @@ class Factory
      * @var LoggerInterface|null
      */
     private $logger;
+
+    /**
+     * @var array|SystemInterface[]
+     */
+    private $systems = [];
 
     /**
      * Factory constructor.
@@ -44,11 +49,22 @@ class Factory
     /**
      * @param string $system
      * @param array $config
+     * @return Manager
+     */
+    public function register(string $system, array $config): Manager
+    {
+        $this->systems[$system] = new $system($config, $this->loop, $this->logger);
+
+        return $this;
+    }
+
+    /**
+     * @param string $system
      * @return SystemInterface
      */
-    public function create(string $system, array $config): SystemInterface
+    public function get(string $system): SystemInterface
     {
-        return new $system($config, $this->loop, $this->logger);
+        return $this->systems[$system];
     }
 
     /**
@@ -57,5 +73,13 @@ class Factory
     public function getEventLoop(): LoopInterface
     {
         return $this->loop;
+    }
+
+    /**
+     * @return void
+     */
+    public function connect(): void
+    {
+        $this->loop->run();
     }
 }

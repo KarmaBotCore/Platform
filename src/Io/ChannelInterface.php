@@ -9,11 +9,16 @@ declare(strict_types=1);
 
 namespace KarmaBot\Platform\Io;
 
+use KarmaBot\Platform\Support\PublishableInterface;
+use KarmaBot\Platform\Support\SubscribableInterface;
+
 /**
  * Interface ChannelInterface
  * @package KarmaBot\Platform\Io
  */
-interface ChannelInterface extends PublishInterface, SubscribeInterface
+interface ChannelInterface extends
+    PublishableInterface,
+    SubscribableInterface
 {
     /**
      * @return SystemInterface
@@ -31,15 +36,8 @@ interface ChannelInterface extends PublishInterface, SubscribeInterface
     public function getId(): string;
 
     /**
-     * @param string $messageId
-     * @param string $message
-     * @return ChannelInterface
-     */
-    public function update(string $messageId, string $message): ChannelInterface;
-
-    /**
      * @param string|null $beforeId
-     * @return ReceivedMessageInterface[]|\Traversable
+     * @return MessageInterface[]|\Traversable
      */
     public function messages(string $beforeId = null): \Traversable;
 }

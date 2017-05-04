@@ -7,17 +7,17 @@
  */
 declare(strict_types=1);
 
-namespace KarmaBot\Platform\Io;
+namespace KarmaBot\Platform\Support;
 
 /**
- * Interface PublishInterface
- * @package KarmaBot\Platform\Io
+ * Interface PublishableInterface
+ * @package KarmaBot\Platform\Support
  */
-interface PublishInterface
+interface PublishableInterface
 {
     /**
      * @param string $message
-     * @return PublishInterface
+     * @return void
      */
-    public function publish(string $message): PublishInterface;
+    public function publish(string $message): void;
 }
