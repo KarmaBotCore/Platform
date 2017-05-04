@@ -76,7 +76,7 @@ abstract class AbstractMessage implements MessageInterface
         switch (static::MESSAGE_EDIT_TIMEOUT) {
             case 0:
                 return true;
-            case -1;
+            case -1:
                 return false;
         }
 
