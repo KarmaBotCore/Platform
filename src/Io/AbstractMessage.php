@@ -69,35 +69,19 @@ abstract class AbstractMessage implements MessageInterface
     }
 
     /**
-     * @return string
+     * @return bool
      */
-    public function getBody(): string
+    public function canBeUpdated(): bool
     {
-        return $this->body;
-    }
+        switch (static::MESSAGE_EDIT_TIMEOUT) {
+            case 0:
+                return true;
+            case -1;
+                return false;
+        }
 
-    /**
-     * @return ChannelInterface
-     */
-    public function getChannel(): ChannelInterface
-    {
-        return $this->channel;
-    }
-
-    /**
-     * @return UserInterface
-     */
-    public function getUser(): UserInterface
-    {
-        return $this->author;
-    }
-
-    /**
-     * @return \Traversable
-     */
-    public function getMentions(): \Traversable
-    {
-        return new \ArrayIterator($this->mentions);
+        return Carbon::createFromTimestamp($this->at()->getTimestamp(), $this->at()->getTimezone())
+                ->addSeconds(static::MESSAGE_EDIT_TIMEOUT) > Carbon::now($this->at()->getTimezone());
     }
 
     /**
@@ -109,6 +93,21 @@ abstract class AbstractMessage implements MessageInterface
     }
 
     /**
+     * @return array
+     */
+    public function __debugInfo(): array
+    {
+        return [
+            'id'       => $this->getId(),
+            'message'  => $this->getBody(),
+            'from'     => $this->getUser(),
+            'in'       => $this->getChannel(),
+            'at'       => $this->at(),
+            'mentions' => iterator_to_array($this->getMentions()),
+        ];
+    }
+
+    /**
      * @return string
      */
     public function getId(): string
@@ -117,16 +116,34 @@ abstract class AbstractMessage implements MessageInterface
     }
 
     /**
-     * @return bool
+     * @return string
      */
-    public function canBeUpdated(): bool
+    public function getBody(): string
     {
-        switch (static::MESSAGE_EDIT_TIMEOUT) {
-            case 0:  return true;
-            case -1; return false;
-        }
+        return $this->body;
+    }
 
-        return Carbon::createFromTimestamp($this->at()->getTimestamp(), $this->at()->getTimezone())
-                ->addSeconds(static::MESSAGE_EDIT_TIMEOUT) > Carbon::now($this->at()->getTimezone());
+    /**
+     * @return UserInterface
+     */
+    public function getUser(): UserInterface
+    {
+        return $this->author;
+    }
+
+    /**
+     * @return ChannelInterface
+     */
+    public function getChannel(): ChannelInterface
+    {
+        return $this->channel;
+    }
+
+    /**
+     * @return \Traversable
+     */
+    public function getMentions(): \Traversable
+    {
+        return new \ArrayIterator($this->mentions);
     }
 }
