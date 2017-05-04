@@ -7,13 +7,13 @@
  */
 declare(strict_types=1);
 
-namespace KarmaBot\Platform\Io;
+namespace Karma\Platform\Io;
 
 /**
- * Class User
- * @package KarmaBot\Platform\Io
+ * Class AbstractUser
+ * @package Karma\Platform\Io
  */
-class User implements UserInterface
+abstract class AbstractUser implements UserInterface
 {
     /**
      * @var SystemInterface

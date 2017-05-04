@@ -7,16 +7,16 @@
  */
 declare(strict_types=1);
 
-namespace KarmaBot\Platform;
+namespace Karma\Platform;
 
 use Psr\Log\LoggerInterface;
 use React\EventLoop\LoopInterface;
 use React\EventLoop\Factory as EventLoop;
-use KarmaBot\Platform\Io\SystemInterface;
+use Karma\Platform\Io\SystemInterface;
 
 /**
  * Class Manager
- * @package KarmaBot\Platform
+ * @package Karma\Platform
  */
 class Manager
 {
@@ -47,13 +47,25 @@ class Manager
     }
 
     /**
-     * @param string $system
-     * @param array $config
+     * @param SystemInterface $system
+     * @param null|string $alias
      * @return Manager
      */
-    public function register(string $system, array $config): Manager
+    public function register(SystemInterface $system, ?string $alias = null): Manager
     {
-        $this->systems[$system] = new $system($config, $this->loop, $this->logger);
+        if ($alias !== null) {
+            $this->systems[$alias] = $system;
+        }
+
+        if (!isset($this->systems[$system->getName()])) {
+            $this->systems[$system->getName()] = $system;
+        }
+
+        if (!isset($this->systems[get_class($system)])) {
+            $this->systems[get_class($system)] = $system;
+        }
+
+        $system->onRegister($this->loop, $this->logger);
 
         return $this;
     }

@@ -7,13 +7,13 @@
  */
 declare(strict_types=1);
 
-namespace KarmaBot\Platform\Support;
+namespace Karma\Platform\Support;
 
 use Psr\Log\LoggerInterface;
 
 /**
  * Trait Loggable
- * @package KarmaBot\Platform\Support
+ * @package Karma\Platform\Support
  * @mixin LoggableInterface
  */
 trait Loggable

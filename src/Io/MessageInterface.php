@@ -7,14 +7,19 @@
  */
 declare(strict_types=1);
 
-namespace KarmaBot\Platform\Io;
+namespace Karma\Platform\Io;
 
 /**
  * Interface MessageInterface
- * @package KarmaBot\Platform\Io
+ * @package Karma\Platform\Io
  */
 interface MessageInterface
 {
+    /**
+     * @return string
+     */
+    public function getBody(): string;
+
     /**
      * @return ChannelInterface
      */

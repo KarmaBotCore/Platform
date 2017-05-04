@@ -5,11 +5,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace KarmaBot\Platform\Io;
+namespace Karma\Platform\Io;
 
 /**
  * Interface UserInterface
- * @package KarmaBot\Platform\Io
+ * @package Karma\Platform\Io
  */
 interface UserInterface
 {

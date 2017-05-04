@@ -7,11 +7,11 @@
  */
 declare(strict_types=1);
 
-namespace KarmaBot\Platform\Support;
+namespace Karma\Platform\Support;
 
 /**
  * Interface PublishableInterface
- * @package KarmaBot\Platform\Support
+ * @package Karma\Platform\Support
  */
 interface PublishableInterface
 {

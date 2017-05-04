@@ -7,24 +7,23 @@
  */
 declare(strict_types=1);
 
-namespace KarmaBot\Platform\Io;
+namespace Karma\Platform\Io;
 
 use Psr\Log\LoggerInterface;
 use React\EventLoop\LoopInterface;
 
 /**
  * Interface SystemInterface
- * @package KarmaBot\Platform\Io
+ * @package Karma\Platform\Io
  */
 interface SystemInterface
 {
-    /**
-     * SystemInterface constructor.
-     * @param array $config
+    /***
      * @param LoopInterface $loop
      * @param null|LoggerInterface $logger
+     * @return void
      */
-    public function __construct(array $config, LoopInterface $loop, ?LoggerInterface $logger);
+    public function onRegister(LoopInterface $loop, ?LoggerInterface $logger): void;
 
     /**
      * @return UserInterface
@@ -44,9 +43,9 @@ interface SystemInterface
     public function channel(string $channelId): ChannelInterface;
 
     /**
-     * @return array|ChannelInterface[]
+     * @return \Traversable|ChannelInterface[]
      */
-    public function channels(): array;
+    public function channels(): \Traversable;
 
     /**
      * @return string

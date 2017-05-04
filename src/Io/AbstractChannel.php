@@ -7,11 +7,11 @@
  */
 declare(strict_types=1);
 
-namespace KarmaBot\Platform\Io;
+namespace Karma\Platform\Io;
 
 /**
  * Class AbstractChannel
- * @package KarmaBot\Platform\Io
+ * @package Karma\Platform\Io
  */
 abstract class AbstractChannel implements ChannelInterface
 {
