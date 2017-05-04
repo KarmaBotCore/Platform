@@ -19,7 +19,7 @@ interface ParserInterface
 {
     /**
      * @param string $html
-     * @param \Traversable|UserInterface[] $mentions
+     * @param array|UserInterface[] $mentions
      * @return string
      */
     public function parse(string $html, array $mentions): string;
