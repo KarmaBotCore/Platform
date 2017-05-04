@@ -44,7 +44,7 @@ abstract class AbstractSystem implements SystemInterface, LoggableInterface
      * @param \Closure $then
      * @return ChannelInterface
      */
-    protected function getChannel(string $id, \Closure $then): ChannelInterface
+    public function getChannel(string $id, \Closure $then): ChannelInterface
     {
         return $this->fetch(ChannelInterface::class, $id, $then);
     }
@@ -54,7 +54,7 @@ abstract class AbstractSystem implements SystemInterface, LoggableInterface
      * @param \Closure $then
      * @return UserInterface
      */
-    protected function getUser(string $id, \Closure $then): UserInterface
+    public function getUser(string $id, \Closure $then): UserInterface
     {
         return $this->fetch(UserInterface::class, $id, $then);
     }

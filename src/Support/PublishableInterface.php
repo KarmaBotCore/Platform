@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Karma\Platform\Support;
 
+use Karma\Platform\Io\MessageInterface;
+
 /**
  * Interface PublishableInterface
  * @package Karma\Platform\Support
@@ -17,7 +19,7 @@ interface PublishableInterface
 {
     /**
      * @param string $message
-     * @return void
+     * @return MessageInterface
      */
-    public function publish(string $message): void;
+    public function publish(string $message): MessageInterface;
 }
