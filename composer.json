@@ -1,5 +1,5 @@
 {
-    "name": "karmabot/platform",
+    "name": "karma/platform",
     "type": "library",
     "description": "Bot platform kernel",
     "license": "MIT",
