@@ -7,16 +7,16 @@
  */
 declare(strict_types=1);
 
-namespace Karma\Platform\Tests;
-
-use PHPUnit\Framework\Assert;
-use PHPUnit\Framework\TestCase as BaseTestCase;
+namespace Karma\Platform\Ast;
 
 /**
- * Class TestCase
- * @package Karma\Platform\Tests
+ * Interface NodeInterface
+ * @package Karma\Platform\Ast
  */
-abstract class TestCase extends BaseTestCase
+interface NodeInterface
 {
-
+    /**
+     * @return string
+     */
+    public function getBody(): string;
 }

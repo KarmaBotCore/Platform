@@ -7,17 +7,19 @@
  */
 declare(strict_types=1);
 
-namespace Karma\Platform\Transformer;
+namespace Karma\Platform\Ast\Transformer;
+
+use Karma\Platform\Ast\NodeList;
 
 /**
- * Interface RenderableInterface
- * @package Karma\Platform\Transformer
+ * Interface RendererInterface
+ * @package Karma\Platform\Ast\Transformer
  */
 interface RendererInterface
 {
     /**
-     * @param string $internalXml
+     * @param NodeList $nodes
      * @return string
      */
-    public function render(string $internalXml): string;
+    public function render(NodeList $nodes): string;
 }

@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Karma\Platform\Support;
 
+use Karma\Platform\Ast\NodeList;
 use Karma\Platform\Io\MessageInterface;
 
 /**
@@ -18,8 +19,8 @@ use Karma\Platform\Io\MessageInterface;
 interface PublishableInterface
 {
     /**
-     * @param string $message
+     * @param NodeList $message
      * @return MessageInterface
      */
-    public function publish(string $message): MessageInterface;
+    public function publish(NodeList $message): MessageInterface;
 }

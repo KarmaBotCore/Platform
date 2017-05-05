@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Karma\Platform\Io;
 
+use Karma\Platform\Ast\NodeList;
+
 /**
  * Interface MessageInterface
  * @package Karma\Platform\Io
@@ -16,9 +18,9 @@ namespace Karma\Platform\Io;
 interface MessageInterface
 {
     /**
-     * @return string
+     * @return NodeList
      */
-    public function getBody(): string;
+    public function getNodes(): NodeList;
 
     /**
      * @return ChannelInterface

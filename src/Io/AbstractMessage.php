@@ -10,6 +10,8 @@ declare(strict_types=1);
 namespace Karma\Platform\Io;
 
 use Carbon\Carbon;
+use Karma\Platform\Ast\NodeList;
+use SebastianBergmann\CodeCoverage\Report\Xml\Node;
 
 /**
  * Class AbstractMessage
@@ -38,7 +40,7 @@ abstract class AbstractMessage implements MessageInterface
     protected $id;
 
     /**
-     * @var string
+     * @var NodeList
      */
     protected $body;
 
@@ -57,9 +59,9 @@ abstract class AbstractMessage implements MessageInterface
      * @param ChannelInterface $channel
      * @param UserInterface $author
      * @param string $id
-     * @param string $body
+     * @param NodeList $body
      */
-    public function __construct(ChannelInterface $channel, UserInterface $author, string $id, string $body)
+    public function __construct(ChannelInterface $channel, UserInterface $author, string $id, NodeList $body)
     {
         $this->channel = $channel;
         $this->author = $author;
@@ -99,10 +101,10 @@ abstract class AbstractMessage implements MessageInterface
     {
         return [
             'id'       => $this->getId(),
-            'message'  => $this->getBody(),
+            'message'  => $this->getNodes()->getBody(),
             'from'     => $this->getUser(),
             'in'       => $this->getChannel(),
-            'at'       => $this->at(),
+            'at'       => $this->at()->format(Carbon::RFC3339),
             'mentions' => iterator_to_array($this->getMentions()),
         ];
     }
@@ -116,9 +118,9 @@ abstract class AbstractMessage implements MessageInterface
     }
 
     /**
-     * @return string
+     * @return NodeList
      */
-    public function getBody(): string
+    public function getNodes(): NodeList
     {
         return $this->body;
     }
